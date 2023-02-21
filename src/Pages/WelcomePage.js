@@ -7,7 +7,7 @@ import SignUp from "../components/SignUp";
 const WelcomePage = () => {
     const [person, setPerson] = useState("");
     const [isRegistered, setRegistered] = useState("true");
-
+    console.log("welcome!!!");
     console.log(person);
     return (
         <div className={classes.container}>
