@@ -89,3 +89,14 @@
     color:  rgb(1, 122, 162);
     cursor: pointer;
 }
+
+.name {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
+
+.formWrapper form .name input {
+    width:150px;
+    border-bottom: 2px solid black;
+}
