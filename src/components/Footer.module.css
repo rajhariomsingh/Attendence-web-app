@@ -1,0 +1,9 @@
+.footer {
+    background-color: rgb(1, 50, 67);
+    text-align: center;
+    color: aliceblue;
+    display: block;
+    padding-top: 10px;
+    display: block;
+    /* justify-content: center; */
+}

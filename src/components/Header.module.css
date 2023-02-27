@@ -1,0 +1,102 @@
+.container {
+      width: 100%;
+    display: grid;
+     padding: 10px 0;
+
+    grid-template-columns: auto 50%;
+    justify-content: space-evenly;
+    
+    align-items: center;
+    background-color: aliceblue;
+    box-shadow: 0 2px 4px  rgba(0, 0, 0, 0.26);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    
+}
+.navContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    /* align-items: end; */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: block;
+    border: 1px solid rgb(1, 122, 162);
+    border-radius: 25px; 
+    padding: 10px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+    position: relative;
+    color: black;
+}
+.nav p {
+    display: inline;
+}
+.notiCount {
+    background-color: rgb(219, 56, 2);
+    color: aliceblue;
+    padding: 5px;
+    position: absolute;
+    left: 100px;
+    top: -5px;
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    text-align: center;
+
+}
+
+.logout {
+    background-color: rgb(1, 122, 162);
+    color: aliceblue;
+}
+
+.nav:hover {
+    background-color: rgba(1, 122, 162, 0.692);
+    color: aliceblue;
+    transform: translate(2px, 2px);
+}
+.menus img {
+    width:25px;
+}
+.menus {
+    display: none;
+
+}
+
+.navclass {
+  background-color: rgba(1, 122, 162, 0.692);
+  border-radius: 25px;
+}
+
+@media screen and (max-width: 850px){
+    .navContainer{
+        display: none;
+    }
+    
+    .menus {
+       display: inline;
+      text-align: end;
+      padding: auto;
+      transition: 0.2s;
+      
+    }
+    
+.sideBar {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    justify-content: center;  
+}
+
+}
+
+
+
