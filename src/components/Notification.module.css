@@ -1,12 +1,15 @@
 .container{
     position:fixed;
-    width: 40%;
+    width: 75%;
     z-index: 15;
     min-height: 100vh;
-    right: 0;
+    right: -40%;
     top:0;
     background-color: rgb(220, 237, 251);
     transition: 0.4s;
+    animation: movein 0.5s ease forwards;
+
+   
 }
 
 .close{
@@ -38,4 +41,14 @@
     padding: 12px;
     transform: translate(2px, 2px);
 }
+
+
+@keyframes movein {
+   from {right: -75%;}
+   to {right:0}
+}
+@keyframes moveout {
+    from {right: 0;}
+    to {right:-75%}
+ }
 

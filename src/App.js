@@ -29,7 +29,11 @@ function App() {
       <Route path="/room" > <HomePage /></Route>
       <Route path="/createroom" > <CreateRoomPage /></Route>
       <Route path="/about" ><AboutPage /></Route>
-      <Route path="*"><WelcomePage setLoggedIn={setLoggedIn} /></Route>
+        <Route path="/"><WelcomePage setLoggedIn={setLoggedIn} /></Route>
+        <Route path="*"><div>
+          <h1>404</h1>
+          <h5>Page not found.<NavLink to='home'>go to HomePage</NavLink></h5>
+        </div></Route>
       </Switch>
       <Footer/>
   </BrowserRouter>

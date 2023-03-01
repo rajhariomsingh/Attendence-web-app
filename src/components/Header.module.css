@@ -33,9 +33,11 @@
     text-align: center;
     position: relative;
     color: black;
+    
 }
 .nav p {
     display: inline;
+   
 }
 .notiCount {
     background-color: rgb(219, 56, 2);
@@ -73,6 +75,7 @@
 .navclass {
   background-color: rgba(1, 122, 162, 0.692);
   border-radius: 25px;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 850px){
@@ -89,14 +92,32 @@
     }
     
 .sideBar {
+    padding-top: 10px;
     margin: 5px;
     display: grid;
     grid-template-columns: auto;
     gap: 10px;
-    justify-content: center;  
+    align-content: start;
+    justify-content: center; 
+    width:75%; 
+    position: fixed;
+    right: 0;
+    top:0;
+    background-color: aliceblue;
+    height: 100vh;
+    text-decoration: none;
+    animation: movein 0.5s ease forwards;
 }
 
 }
+.none {
+    display: none;
+}
+
+@keyframes movein {
+    from {right: -75%;}
+    to {right:0}
+ }
 
 
 

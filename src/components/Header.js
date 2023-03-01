@@ -9,8 +9,9 @@ const Header = ({ setShowNoti, isLoggedIn, setLoggedIn }) => {
             <div className={classes.logoContainer}>
             <h1>BeOnTime</h1>
             </div>
-            <span className={classes.menus} onClick={()=>setShowSide(!isShowSide)}><img src={mlogo} alt="menus"/></span>      
+            <span className={classes.menus} onClick={()=>setShowSide(true)}><img src={mlogo} alt="menus"/></span>      
             {isLoggedIn && <div className={`${classes.navContainer} ${isShowSide === true ? classes.sideBar : ""}`}>
+            <div className={`${classes.nav} ${isShowSide === true ? "" : classes.none}`} onClick={()=>setShowSide(false)}>Close</div>
                 <NavLink activeClassName={classes.navclass} to='/room'><div className={classes.nav}><p>Rooms</p></div></NavLink>
                <NavLink activeClassName={classes.navclass} to="/createroom"><div className={classes.nav}><p>Create Room</p></div></NavLink>
               <div className={classes.nav} onClick={() => setShowNoti(true)}><p>Notification</p> <span className={classes.notiCount}></span></div>
