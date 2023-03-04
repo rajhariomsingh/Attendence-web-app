@@ -9,6 +9,7 @@ import Notification from "../src/components/Notification";
 import Footer from './components/Footer';
 import AboutPage from './Pages/AboutPage';
 import CreateRoomPage from './Pages/CreateRoomPage';
+import AttendencePage from './Pages/AttendencePage';
 function App() {
   const history = useHistory();
   const [isShowNoti, setShowNoti] = useState(false);
@@ -26,7 +27,10 @@ function App() {
       <Header setShowNoti={setShowNoti} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
       {isShowNoti && <Notification setShowNoti={setShowNoti} />}
       <Switch>
-      <Route path="/room" > <HomePage /></Route>
+        <Route path="/room/:roomID"><AttendencePage /></Route>
+        
+        <Route path="/room" > <HomePage /></Route>
+       
       <Route path="/createroom" > <CreateRoomPage /></Route>
       <Route path="/about" ><AboutPage /></Route>
         <Route path="/"><WelcomePage setLoggedIn={setLoggedIn} /></Route>
@@ -37,7 +41,9 @@ function App() {
       </Switch>
       <Footer/>
   </BrowserRouter>
-   
+
+
+    
   );
 }
 
