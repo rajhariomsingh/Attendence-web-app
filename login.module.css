@@ -1,0 +1,100 @@
+
+.formWrapper{
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-rows: 10% 80% 10%;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid black; */
+}
+.logo {
+    text-align: center;
+    padding-top: 30px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+} 
+.formWrapper form {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto ;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+} 
+.formWrapper form input {
+    outline: none;
+    border: none;
+    padding-top: 25px;
+    border-bottom: 2px solid black;
+    width: 300px;
+    font-size: 1.2rem;
+    
+}
+.formWrapper form button {
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.formWrapper form button:hover {
+    background-color: rgb(1, 122, 162);
+    transform: translate(2px, 2px);
+    border: 2px solid black;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.inputWrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.icons {
+    display: block;
+    /* ///// */
+    overflow: hidden; 
+    /* border-bottom: 2px solid black; */
+}
+.icons img {
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.googleLogin {
+    margin: auto;
+    height: 45px;
+    width:100%;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: auto auto;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+.googleLogin div{
+   padding: 10px;
+}
+
+.googleLogin:hover {
+    background-color: rgb(1, 122, 162);
+    border: 2px solid black;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.signup, .forget {
+    text-decoration: underline;
+    color:  rgb(1, 122, 162);
+    cursor: pointer;
+}
+.error{
+    font-weight: bold;
+    font-size: 0.800rem;
+    color: red;
+    text-align: center;
+}
+.button:disabled{
+  background-color: gray;
+}
