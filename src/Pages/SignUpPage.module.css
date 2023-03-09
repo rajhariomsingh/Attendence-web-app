@@ -1,3 +1,73 @@
+.container {
+    height: 90vh;
+   width: 100vw; 
+   /* padding: 10% 20%; */
+   background-color: rgb(216, 216, 216);
+   display: grid;
+   justify-content: center;
+   align-items: center;
+   
+}
+
+.wrapper {
+   width: 70vw;
+   height: 80vh;
+
+   border-radius: 10px;
+   overflow: hidden;
+   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.26);
+
+}
+
+
+.Model {
+   width: 100%;
+   background-color: rgb(242, 242, 242);
+   display: grid;
+   align-items: center; 
+   justify-content: center;
+}
+.image  {
+   text-align: center;
+   cursor: pointer;
+   display: block;
+   overflow: hidden;
+}
+.image img {
+   height: 80px;
+}
+.buttonWrapper {
+
+   display: block;
+   display: grid;
+
+   grid-template-rows: auto auto auto auto;
+   grid-template-columns: 100%;
+   gap: 5px;
+   align-items: center; 
+   /* justify-content: space-evenly; */
+}
+.button {
+ 
+       display: block;
+       border: 1px solid rgb(1, 122, 162);
+       border-radius: 25px; 
+       padding: 10px 15px;
+       font-weight: 600;
+       cursor: pointer;
+       transition: 0.2s;
+       text-align: center;
+       position: relative;
+       color: black;
+ 
+}
+
+.button:hover {
+   background-color: rgba(1, 122, 162, 0.692);
+   color: aliceblue;
+   transform: translate(2px, 2px);
+   cursor: pointer;
+}
 
 .formWrapper{
     
@@ -114,4 +184,24 @@
     border-bottom: 2px solid black;
     font-size: 1.2rem;
     background-color: rgb(242, 242, 242); 
+ }
+
+
+@media screen and (max-width: 2000px) {
+.wrapper {
+   display: grid;
+   grid-template-columns: 1.3fr  1fr;
+}
+}
+
+
+ @media screen and (max-width: 1000px) {
+
+   .wrapper {
+       display: grid;
+   grid-template-columns: 1fr;
+   width: 100vw;
+   height: 100%;
+    }
+
  }

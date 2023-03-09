@@ -1,8 +1,9 @@
 
 
 .container {
-     height: 90vh;
+     height: 100vh;
     width: 100vw; 
+    /* min-width: 500px; */
     /* padding: 10% 20%; */
     background-color: rgb(216, 216, 216);
     display: grid;
@@ -21,16 +22,9 @@
 
 }
 
-.AttendImage {
-    height: 80vh;
-    background-image: url("../assets/attendence-image.jpg");
-    background-size: cover;
-    overflow: hidden;
-
-}
 
 .Model {
-    width: 100%;
+    width: 1fr;
     background-color: rgb(242, 242, 242);
     display: grid;
     align-items: center; 
@@ -86,9 +80,7 @@
 
 
   @media screen and (max-width: 1000px) {
-    .AttendImage {
-        display: none;
-    }
+
     .wrapper {
         display: grid;
     grid-template-columns: 1fr;

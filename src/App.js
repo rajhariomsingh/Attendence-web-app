@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import AboutPage from './Pages/AboutPage';
 import CreateRoomPage from './Pages/CreateRoomPage';
 import AttendencePage from './Pages/AttendencePage';
+import LoginPage from './Pages/LoginPage';
+import SignUpPage from './Pages/SignUpPage';
 function App() {
   const history = useHistory();
   const [isShowNoti, setShowNoti] = useState(false);
@@ -18,30 +20,28 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn)
-      history.push('/home');
+      history.push('/');
  }, [isLoggedIn]);
 
   return (
+    <div className='appContainer'>
     <BrowserRouter>
-
+      
       <Header setShowNoti={setShowNoti} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
       {isShowNoti && <Notification setShowNoti={setShowNoti} />}
       <Switch>
-        <Route path="/room/:roomID"><AttendencePage /></Route>
-        
-        <Route path="/room" > <HomePage /></Route>
-       
       <Route path="/createroom" > <CreateRoomPage /></Route>
-      <Route path="/about" ><AboutPage /></Route>
-        <Route path="/"><WelcomePage setLoggedIn={setLoggedIn} /></Route>
-        <Route path="*"><div>
-          <h1>404</h1>
-          <h5>Page not found.<NavLink to='home'>go to HomePage</NavLink></h5>
-        </div></Route>
+          <Route path="/about" ><AboutPage /></Route>
+          <Route path="/login"> <LoginPage setLoggedIn={setLoggedIn}/></Route>
+        <Route path="/signUp"><SignUpPage setLoggedIn={setLoggedIn}/></Route>
+        <Route path="/room/:roomID"><AttendencePage /></Route>
+          <Route path="/room" > <HomePage /></Route>
+          <Route path="/"><WelcomePage  /></Route>
+
       </Switch>
       <Footer/>
   </BrowserRouter>
-
+  </div>
 
     
   );

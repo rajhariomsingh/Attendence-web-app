@@ -1,6 +1,7 @@
 .container{
     position:fixed;
     width: 75%;
+    max-width: 450px;
     z-index: 15;
     min-height: 100vh;
     right: -40%;
