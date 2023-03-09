@@ -2,8 +2,8 @@ import  { useEffect, useState } from 'react';
 import HomePage from './Pages/HomePage';
 import WelcomePage from './Pages/WelcomePage';
 import React, { Component } from "react";
-import {NavLink, Route, Switch, useHistory, useNavigate} from 'react-router-dom';
-import { BrowserRouter} from 'react-router-dom';
+import { NavLink,  useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Notification from "../src/components/Notification";
 import Footer from './components/Footer';
@@ -12,35 +12,35 @@ import CreateRoomPage from './Pages/CreateRoomPage';
 import AttendencePage from './Pages/AttendencePage';
 import LoginPage from './Pages/LoginPage';
 import SignUpPage from './Pages/SignUpPage';
+
 function App() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [isShowNoti, setShowNoti] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(false);
-
+  
   useEffect(() => {
     if (!isLoggedIn)
-      history.push('/');
+      navigate('/');
  }, [isLoggedIn]);
 
   return (
     <div className='appContainer'>
-    <BrowserRouter>
-      
+  
       <Header setShowNoti={setShowNoti} isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
       {isShowNoti && <Notification setShowNoti={setShowNoti} />}
-      <Switch>
-      <Route path="/createroom" > <CreateRoomPage /></Route>
-          <Route path="/about" ><AboutPage /></Route>
-          <Route path="/login"> <LoginPage setLoggedIn={setLoggedIn}/></Route>
-        <Route path="/signUp"><SignUpPage setLoggedIn={setLoggedIn}/></Route>
-        <Route path="/room/:roomID"><AttendencePage /></Route>
-          <Route path="/room" > <HomePage /></Route>
-          <Route path="/"><WelcomePage  /></Route>
-
-      </Switch>
+      <Routes>
+          <Route path="/createroom" element={<CreateRoomPage />}/> 
+          <Route path="/about"  element={<AboutPage />}/>
+          <Route path="/login"   element={ <LoginPage setLoggedIn={setLoggedIn}/>}/>
+        <Route path="/signUp"   element={<SignUpPage setLoggedIn={setLoggedIn}/>}/>
+        <Route path="/room/:roomID" element={<AttendencePage />}/>
+          <Route path="/room"  element={ <HomePage />}/>
+          <Route path="/"    element={<WelcomePage  />}/>
+        </Routes>
+       
       <Footer/>
-  </BrowserRouter>
+  
   </div>
 
     

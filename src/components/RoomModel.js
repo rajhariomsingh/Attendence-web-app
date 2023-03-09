@@ -1,11 +1,11 @@
 import React from "react";
 import classes from "../components/RoomModel.module.css";
-import { useHistory } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 const RoomModel = ({ room }) => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const selectRoomHandler = (id) => {
         // console.log(id, '*');
-        history.push(`/room/${id}`);
+        navigate(`/room/${id}`);
     }
     return (
            

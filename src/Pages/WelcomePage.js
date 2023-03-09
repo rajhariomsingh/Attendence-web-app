@@ -4,10 +4,10 @@ import { useState } from "react";
 import teacher from "../assets/teacher.png";
 import student from "../assets/student.png";
 import ImageModel from "../components/ImageModel";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, Route, useNavigate } from "react-router-dom";
 
 const WelcomePage = () => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [person, setPerson] = useState("");
 
     

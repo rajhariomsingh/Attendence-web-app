@@ -1,7 +1,7 @@
 
 
 .container {
-     height: 100vh;
+     height: 90vh;
     width: 100vw; 
     /* min-width: 500px; */
     /* padding: 10% 20%; */
@@ -15,7 +15,6 @@
 .wrapper {
     width: 70vw;
     height: 80vh;
-
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.26);
