@@ -1,32 +1,32 @@
 .container {
-    height: 100px;
-    display: grid;
-    grid-template-rows: auto auto;
-    background-color: rgb(1, 122, 162);
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.259);
-    padding: 40px;
-    gap: 30px;
-    color: aliceblue;
-    transition: 0.2s;
-    cursor: pointer;
-    flex-basis: 300px;
+  height: 100px;
+  display: grid;
+  grid-template-rows: auto auto;
+  background-color: rgb(1, 122, 162);
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.259);
+  padding: 40px;
+  gap: 30px;
+  color: aliceblue;
+  transition: 0.2s;
+  cursor: pointer;
+  flex-basis: 300px;
 }
 
 .className {
-    border-bottom: 2px solid aliceblue;
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
+  border-bottom: 2px solid aliceblue;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
 }
 .description {
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
 }
 
-.container:hover{
-    background-color:  #017aa2e6;
-    transform: scale(1.1);
-    position:sticky;
+.container:hover {
+  background-color: #017aa2e6;
+  transform: scale(1.1);
+  position: sticky;
 }
