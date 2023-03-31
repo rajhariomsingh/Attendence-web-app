@@ -16,7 +16,7 @@ const RoomModel = ({ room }) => {
     >
       <div className={classes.className}>
         <div>
-          <h2>{room.roomNo}</h2>
+          <h2>{room.roomName}</h2>
         </div>
         <div>
           <h2>IT-1</h2>

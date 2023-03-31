@@ -12,7 +12,17 @@ const Student = ({ student, selectedDate, roomId }) => {
     const collection = "ATTENDANCE";
 
     const cityRef = doc(db, collection, attendanceId);
-    setDoc(cityRef, { present: ["P", ...present], absent }, { merge: true });
+    setDoc(
+      cityRef,
+      {
+        present: ["P", ...present],
+        absent,
+        studentId: student.id,
+        roomId,
+        selectedDate,
+      },
+      { merge: true }
+    );
     setPresent(["P", ...present]);
   };
 
@@ -20,7 +30,17 @@ const Student = ({ student, selectedDate, roomId }) => {
     const collection = "ATTENDANCE";
 
     const cityRef = doc(db, collection, attendanceId);
-    setDoc(cityRef, { absent: ["A", ...absent], present }, { merge: true });
+    setDoc(
+      cityRef,
+      {
+        absent: ["A", ...absent],
+        present,
+        studentId: student.id,
+        roomId,
+        selectedDate,
+      },
+      { merge: true }
+    );
     setAbsent(["A", ...absent]);
   };
   const resetHandler = () => {
@@ -31,7 +51,11 @@ const Student = ({ student, selectedDate, roomId }) => {
     const collection = "ATTENDANCE";
 
     const cityRef = doc(db, collection, attendanceId);
-    setDoc(cityRef, { present: [], absent: [] }, { merge: true });
+    setDoc(
+      cityRef,
+      { present: [], absent: [], studentId: student.id, roomId, selectedDate },
+      { merge: true }
+    );
   };
 
   useEffect(() => {
@@ -72,7 +96,7 @@ const Student = ({ student, selectedDate, roomId }) => {
 
   return (
     <tr>
-      <td>2000270130062</td>
+      <td>{student.rollNo}</td>
       {/* <td>Gaurav Verma</td> */}
       <td>{student.usename}</td>
       <td>

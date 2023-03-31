@@ -1,22 +1,19 @@
-
 .AttendImage {
-    height: 80vh;
-    background-image: url("../assets/attendence-image.jpg");
-    background-size: cover;
-    overflow: hidden;
-
+  height: 100%;
+  background-image: url("../assets/attendence-image.jpg");
+  background-size: cover;
+  overflow: hidden;
 }
 
 .button:hover {
-    background-color: rgba(1, 122, 162, 0.692);
-    color: aliceblue;
-    transform: translate(2px, 2px);
-    cursor: pointer;
+  background-color: rgba(1, 122, 162, 0.692);
+  color: aliceblue;
+  transform: translate(2px, 2px);
+  cursor: pointer;
 }
 
-  @media screen and (max-width: 1000px) {
-    .AttendImage {
-        display: none;
-    }
-
+@media screen and (max-width: 1000px) {
+  .AttendImage {
+    display: none;
   }
+}
