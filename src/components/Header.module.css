@@ -88,6 +88,9 @@
   .navContainer {
     display: none;
   }
+  .container {
+    grid-template-columns: 90% auto;
+  }
 
   .menus {
     display: inline;
