@@ -31,9 +31,9 @@
   width: inherit;
 }
 
-input {
+.values input {
   width: inherit;
-  border: 1px solid black;
+  border: 2px solid rgba(0, 0, 0, 0.411);
   outline: none;
   height: auto;
   font-size: 20px;
@@ -42,8 +42,23 @@ input {
   width: 50%;
   border-radius: 20px;
 }
-input:hover {
-  border: 1px solid rgba(1, 122, 162, 0.992);
+.values input:hover {
+  border: 2px solid rgba(1, 122, 162, 0.992);
+  cursor: text;
+}
+.roomName input {
+  width: inherit;
+  border: 2px solid rgba(0, 0, 0, 0.411);
+  outline: none;
+  height: auto;
+  font-size: 20px;
+  padding: 10px;
+  background-color: inherit;
+  width: 50%;
+  border-radius: 20px;
+}
+.roomName input:hover {
+  border: 2px solid rgba(1, 122, 162, 0.992);
   cursor: text;
 }
 /* span {

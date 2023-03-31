@@ -1,17 +1,92 @@
 .container {
-    display: grid;
-    min-height: 100vh;
-    height: auto;
-    width:100vw;
-    display: block;
-    grid-template-rows: 1fr;
-    
+  display: grid;
+  min-height: 100vh;
+  height: auto;
+  width: 100vw;
+  /* display: block; */
+  margin-top: 10px;
+  grid-template-rows: 1fr;
 }
 .classRoom {
-    margin: 20px;
-     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-content:flex-start;
-    justify-content: space-evenly;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+}
+
+.joinRoom {
+  min-height: 50px;
+  display: grid;
+  grid-template-columns: 70% auto;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 40px;
+
+  background-color: rgb(1, 122, 162);
+}
+
+.joinRoom input {
+  min-width: 20px;
+  height: 40px;
+  width: inherit;
+  /* height: 80%; */
+  border-radius: 20px;
+  font-size: 16px;
+
+  display: block;
+  padding-left: 10px;
+  margin-right: 5px;
+  border: none;
+  color: aliceblue;
+  border: 1px solid rgb(1, 72, 95);
+  background-color: rgba(145, 227, 255, 0.093);
+  outline-color: rgb(1, 72, 95);
+}
+
+.joinRoom span {
+  display: block;
+  width: 100px;
+  border: 1px solid rgb(1, 72, 95);
+  border-radius: 25px;
+  padding: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  position: relative;
+  color: aliceblue;
+  background-color: rgb(1, 72, 95);
+  text-decoration: none;
+  transition: 3ms;
+}
+
+.joinRoom span:hover {
+  background-color: rgba(1, 72, 95, 0.739);
+  transform: scale(1.1);
+}
+
+.attendanceData {
+  background-color: rgb(1, 122, 162);
+  font-size: large;
+  font-weight: 600;
+  color: aliceblue;
+  padding: 5px 20px;
+}
+
+.dataContainer {
+  display: flex;
+  /* grid-template-columns: auto auto auto; */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.data {
+  background-color: rgb(1, 72, 95);
+  font-size: smaller;
+  padding: 5px 20px;
+  margin: 5px;
+  border-radius: 10px;
 }

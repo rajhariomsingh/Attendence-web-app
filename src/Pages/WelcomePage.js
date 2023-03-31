@@ -14,9 +14,11 @@ import {
   updateDoc,
   collection,
 } from "firebase/firestore";
+import { UserAuth } from "../context/AuthContext";
 const WelcomePage = () => {
+  document.title = "Welcome";
   const navigate = useNavigate();
-  const [person, setPerson] = useState("");
+  const { type, setType } = UserAuth();
 
   // //////
   // const id = new Date().getTime().toString();
@@ -40,7 +42,6 @@ const WelcomePage = () => {
   // ////////
 
   console.log("welcome!!!");
-  console.log(person);
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
@@ -50,10 +51,13 @@ const WelcomePage = () => {
             <div className={classes.image}>
               <img src={teacher} alt="teacher" />
             </div>
-            <Link to="/login">
+            <Link
+              to="/signUp/TEACHER"
+              style={{ color: "inherit", textDecoration: "inherit" }}
+            >
               <div
                 className={classes.button}
-                onClick={() => setPerson("TEACHERS")}
+                onClick={() => setType("TEACHERS")}
               >
                 Teacher
               </div>
@@ -61,10 +65,13 @@ const WelcomePage = () => {
             <div className={classes.image}>
               <img src={student} alt="student" />
             </div>
-            <Link to="/login">
+            <Link
+              to="/signUp/STUDENT"
+              style={{ color: "inherit", textDecoration: "inherit" }}
+            >
               <div
                 className={classes.button}
-                onClick={() => setPerson("STUDENTS")}
+                onClick={() => setType("STUDENTS")}
               >
                 Student
               </div>

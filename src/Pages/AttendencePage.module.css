@@ -108,13 +108,18 @@
 }
 .description {
   text-align: center;
-  font-size: medium;
+  font-size: large;
   font-weight: 800;
 }
-
+.roomId {
+  background-color: rgb(1, 72, 95);
+  font-size: smaller;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
 @media screen and (max-width: 1000px) {
-  .attendence td:nth-child(2),
-  .attendence th:nth-child(2) {
+  .mobile td:nth-child(2),
+  .mobile th:nth-child(2) {
     display: none;
   }
 }
