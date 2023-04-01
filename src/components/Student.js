@@ -58,7 +58,6 @@ const Student = ({ student, selectedDate, roomId }) => {
     }
   };
   const resetHandler = async () => {
-    setLoading(true);
     if (window.confirm("Are you Sure?")) {
       setLoading(true);
       setLoading(true);
