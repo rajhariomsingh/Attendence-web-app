@@ -58,8 +58,9 @@ const Student = ({ student, selectedDate, roomId }) => {
     }
   };
   const resetHandler = async () => {
-    setLoading(true);
+   
     if (window.confirm("Are you Sure?")) {
+       setLoading(true);
       const collection = "ATTENDANCE";
       try {
         const cityRef = doc(db, collection, attendanceId);
