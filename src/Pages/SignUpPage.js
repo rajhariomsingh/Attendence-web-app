@@ -86,9 +86,12 @@ const SignUp = () => {
   };
   return (
     <div className={classes.container}>
-      {loading && <Loading type="bubbles" width="80px" height="80px" />}
+      {loading && (
+        <Loading type="bubbles" width="80px" height="80px" pos="absolute" />
+      )}
       <div className={classes.wrapper}>
         <ImageModel />
+
         <div className={classes.Model}>
           <div className={classes.formWrapper}>
             <span className={classes.logo}>Sign Up</span>

@@ -58,8 +58,8 @@ const Student = ({ student, selectedDate, roomId }) => {
     }
   };
   const resetHandler = async () => {
-    setLoading(true);
     if (window.confirm("Are you Sure?")) {
+      setLoading(true);
       const collection = "ATTENDANCE";
       try {
         const cityRef = doc(db, collection, attendanceId);
@@ -128,7 +128,9 @@ const Student = ({ student, selectedDate, roomId }) => {
       {/* <td>Gaurav Verma</td> */}
       <td>{student.usename}</td>
       <td>
-        {loading && <Loading type="spin" width="20px" height="20px" />}
+        {loading && (
+          <Loading type="spin" width="20px" height="20px" pos="relative" />
+        )}
         {!loading && (
           <span>
             {present.map((id) => (
