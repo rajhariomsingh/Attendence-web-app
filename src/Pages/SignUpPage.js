@@ -14,6 +14,7 @@ import { doc, setDoc, setLogLevel, updateDoc } from "firebase/firestore";
 import { UserAuth } from "../context/AuthContext";
 import rollNo from "../assets/id-card.png";
 import Loading from "../components/Loading";
+import Error from "../components/Error";
 
 const SignUp = () => {
   document.title = "SignUp";
@@ -26,7 +27,7 @@ const SignUp = () => {
     pass: "",
     rollNo: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
+  const [err, setErr] = useState("");
 
   const [submitdisable, setSubmitButtonDisabled] = useState(false);
 
@@ -36,11 +37,17 @@ const SignUp = () => {
   const handlesubmission = (event) => {
     event.preventDefault();
     setLoading(true);
-    if (!values.username || !values.email || !values.pass) {
-      setErrorMsg("FILL ALL DETAILS");
+    if (
+      (type === "TEACHER" &&
+        (!values.username || !values.email || !values.pass)) ||
+      (type === "STUDENT" &&
+        (!values.username || !values.email || !values.pass || !values.rollNo))
+    ) {
+      setErr("auth/empty-details");
+      setLoading(false);
       return;
     }
-    setErrorMsg("");
+    setErr("");
 
     setSubmitButtonDisabled(true);
     console.log(values);
@@ -73,6 +80,7 @@ const SignUp = () => {
       .catch((err) => {
         setLoading(false);
         setSubmitButtonDisabled(false);
+        setErr(err.code);
         console.log(err.message);
       });
   };
@@ -147,10 +155,11 @@ const SignUp = () => {
 
               {/* <div className={classes.name}><input type="text" placeholder="First name"  /> <input type="text" placeholder="Last name" /></div> */}
 
-              {/* <b className={classes.error}>{errorMsg}</b> */}
+              <Error authCode={err} />
               <button className={classes.button} disabled={submitdisable}>
                 Sign up
               </button>
+
               <span>
                 Already registered ?{" "}
                 <Link to="/login">

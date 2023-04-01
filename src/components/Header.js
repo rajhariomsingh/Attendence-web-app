@@ -60,8 +60,8 @@ const Header = ({ setShowNoti }) => {
             <p>Notification</p> <span className={classes.notiCount}></span>
           </div>
           <NavLink
-            activeClassName={classes.navclass}
             to="/about"
+            activeClassName={classes.navclass}
             style={{ color: "inherit", textDecoration: "inherit" }}
           >
             <div className={classes.nav}>

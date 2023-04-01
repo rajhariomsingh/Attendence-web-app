@@ -11,6 +11,7 @@ import { async } from "@firebase/util";
 import Loading from "../components/Loading";
 
 import { UserAuth } from "../context/AuthContext";
+import Error from "../components/Error";
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +27,7 @@ const Login = (props) => {
 
     pass: "",
   });
-  const [errorMsg, setErrorMsg] = useState("");
+  const [err, setErr] = useState();
 
   const [submitdisable, setSubmitButtonDisabled] = useState(false);
 
@@ -34,10 +35,11 @@ const Login = (props) => {
     event.preventDefault();
     setLoading(true);
     if (!values.email || !values.pass) {
-      setErrorMsg("FILL ALL DETAILS");
+      setErr("auth/empty-details");
+      setLoading(false);
       return;
     }
-    setErrorMsg("");
+    setErr("");
 
     setSubmitButtonDisabled(true);
     console.log(values);
@@ -52,7 +54,9 @@ const Login = (props) => {
       .catch((err) => {
         setLoading(false);
         setSubmitButtonDisabled(false);
-        console.log(err.message);
+        var errorCode = err.code;
+        setErr(errorCode);
+        console.log(err.code);
       });
   };
 
@@ -98,7 +102,8 @@ const Login = (props) => {
                 Forget password ?{" "}
                 <span className={classes.forget}>click here</span>
               </span>
-              <b className={classes.error}>{errorMsg}</b>
+
+              <Error authCode={err} />
               <button disabled={submitdisable}>Log In</button>
               <span>
                 Not registered ?{" "}
