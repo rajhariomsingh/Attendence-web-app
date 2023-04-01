@@ -10,66 +10,81 @@ const Student = ({ student, selectedDate, roomId }) => {
   const [loading, setLoading] = useState(false);
   const [someChange, setSomeChange] = useState(true);
   const attendanceId = `${student.id}${selectedDate.date}${selectedDate.getMonth}${selectedDate.getYear}${roomId}`;
-  console.log(attendanceId);
-  const presentHandler = () => {
+  // console.log(attendanceId);
+  const presentHandler = async () => {
     setLoading(true);
     const collection = "ATTENDANCE";
 
-    const cityRef = doc(db, collection, attendanceId);
-    setDoc(
-      cityRef,
-      {
-        present: ["P", ...present],
-        absent,
-        studentId: student.id,
-        roomId,
-        selectedDate,
-      },
-      { merge: true }
-    ).then(setSomeChange((prev) => !prev));
-  };
-
-  const absentHandler = () => {
-    setLoading(true);
-    const collection = "ATTENDANCE";
-
-    const cityRef = doc(db, collection, attendanceId);
-    setDoc(
-      cityRef,
-      {
-        absent: ["A", ...absent],
-        present,
-        studentId: student.id,
-        roomId,
-        selectedDate,
-      },
-      { merge: true }
-    ).then(setSomeChange((prev) => !prev));
-  };
-  const resetHandler = () => {
-    setLoading(true);
-    if (window.confirm("Are you Sure?")) {
-      const collection = "ATTENDANCE";
-
+    try {
       const cityRef = doc(db, collection, attendanceId);
-      setDoc(
+
+      const ans = await setDoc(
         cityRef,
         {
-          present: [],
-          absent: [],
+          present: ["P", ...present],
+          absent,
           studentId: student.id,
           roomId,
           selectedDate,
         },
         { merge: true }
-      ).then(setSomeChange((prev) => !prev));
+      );
+      console.log(ans);
+      setSomeChange((prev) => !prev);
+    } catch {
+      setLoading(false);
+    }
+  };
+
+  const absentHandler = async () => {
+    setLoading(true);
+    const collection = "ATTENDANCE";
+    try {
+      const cityRef = doc(db, collection, attendanceId);
+      await setDoc(
+        cityRef,
+        {
+          absent: ["A", ...absent],
+          present,
+          studentId: student.id,
+          roomId,
+          selectedDate,
+        },
+        { merge: true }
+      );
+      setSomeChange((prev) => !prev);
+    } catch {
+      setLoading(false);
+    }
+  };
+  const resetHandler = async () => {
+    setLoading(true);
+    if (window.confirm("Are you Sure?")) {
+      const collection = "ATTENDANCE";
+      try {
+        const cityRef = doc(db, collection, attendanceId);
+        await setDoc(
+          cityRef,
+          {
+            present: [],
+            absent: [],
+            studentId: student.id,
+            roomId,
+            selectedDate,
+          },
+          { merge: true }
+        );
+        setSomeChange((prev) => !prev);
+      } catch {
+        setLoading(false);
+      }
     }
   };
 
   useEffect(() => {
     // // Define the collection and document ID
     const collection = "ATTENDANCE";
-
+    setLoading(true);
     // // Get the document data if it exists
     // const docRef = db.collection(collection).doc(attendanceId);
     // docRef
@@ -84,23 +99,27 @@ const Student = ({ student, selectedDate, roomId }) => {
     //     }
     //   })
     //   .catch((error) => console.error(error));
-    const res = async () => {
-      const docRef = doc(db, collection, attendanceId);
-      const docSnap = await getDoc(docRef);
+    try {
+      const res = async () => {
+        const docRef = doc(db, collection, attendanceId);
+        const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setPresent([...docSnap.data().present]);
-        setAbsent([...docSnap.data().absent]);
-      } else {
-        setPresent([]);
-        setAbsent([]);
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
+        if (docSnap.exists()) {
+          // console.log("Document data:", docSnap.data());
+          setPresent([...docSnap.data().present]);
+          setAbsent([...docSnap.data().absent]);
+        } else {
+          setPresent([]);
+          setAbsent([]);
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+        setLoading(false);
+      };
+      res();
+    } catch {
       setLoading(false);
-    };
-    res();
+    }
   }, [someChange]);
 
   return (
