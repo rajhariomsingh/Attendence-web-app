@@ -96,7 +96,7 @@ const Student = ({ student, selectedDate, roomId }) => {
 
   return (
     <tr>
-      <td>{student.rollNo}</td>
+      <td title={student.usename}>{student.rollNo}</td>
       {/* <td>Gaurav Verma</td> */}
       <td>{student.usename}</td>
       <td>
