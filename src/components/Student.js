@@ -3,12 +3,16 @@ import { useState } from "react";
 import classes from "../components/Student.module.css";
 import { db } from "../firebase";
 import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import Loading from "../components/Loading";
 const Student = ({ student, selectedDate, roomId }) => {
   const [present, setPresent] = useState([]);
   const [absent, setAbsent] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [someChange, setSomeChange] = useState(true);
   const attendanceId = `${student.id}${selectedDate.date}${selectedDate.getMonth}${selectedDate.getYear}${roomId}`;
   console.log(attendanceId);
   const presentHandler = () => {
+    setLoading(true);
     const collection = "ATTENDANCE";
 
     const cityRef = doc(db, collection, attendanceId);
@@ -22,11 +26,11 @@ const Student = ({ student, selectedDate, roomId }) => {
         selectedDate,
       },
       { merge: true }
-    );
-    setPresent(["P", ...present]);
+    ).then(setSomeChange((prev) => !prev));
   };
 
   const absentHandler = () => {
+    setLoading(true);
     const collection = "ATTENDANCE";
 
     const cityRef = doc(db, collection, attendanceId);
@@ -40,22 +44,26 @@ const Student = ({ student, selectedDate, roomId }) => {
         selectedDate,
       },
       { merge: true }
-    );
-    setAbsent(["A", ...absent]);
+    ).then(setSomeChange((prev) => !prev));
   };
   const resetHandler = () => {
+    setLoading(true);
     if (window.confirm("Are you Sure?")) {
-      setPresent([]);
-      setAbsent([]);
-    }
-    const collection = "ATTENDANCE";
+      const collection = "ATTENDANCE";
 
-    const cityRef = doc(db, collection, attendanceId);
-    setDoc(
-      cityRef,
-      { present: [], absent: [], studentId: student.id, roomId, selectedDate },
-      { merge: true }
-    );
+      const cityRef = doc(db, collection, attendanceId);
+      setDoc(
+        cityRef,
+        {
+          present: [],
+          absent: [],
+          studentId: student.id,
+          roomId,
+          selectedDate,
+        },
+        { merge: true }
+      ).then(setSomeChange((prev) => !prev));
+    }
   };
 
   useEffect(() => {
@@ -90,9 +98,10 @@ const Student = ({ student, selectedDate, roomId }) => {
         // doc.data() will be undefined in this case
         console.log("No such document!");
       }
+      setLoading(false);
     };
     res();
-  }, [attendanceId]);
+  }, [someChange]);
 
   return (
     <tr>
@@ -100,16 +109,21 @@ const Student = ({ student, selectedDate, roomId }) => {
       {/* <td>Gaurav Verma</td> */}
       <td>{student.usename}</td>
       <td>
-        <span>
-          {present.map((id) => (
-            <span className={classes.pSpan}>{id}</span>
-          ))}
-        </span>
-        <span>
-          {absent.map((id) => (
-            <span className={classes.aSpan}>{id}</span>
-          ))}
-        </span>
+        {loading && <Loading type="spin" width="20px" height="20px" />}
+        {!loading && (
+          <span>
+            {present.map((id) => (
+              <span className={classes.pSpan}>{id}</span>
+            ))}
+          </span>
+        )}
+        {!loading && (
+          <span>
+            {absent.map((id) => (
+              <span className={classes.aSpan}>{id}</span>
+            ))}
+          </span>
+        )}
       </td>
       <td>
         <button className={classes.present} onClick={presentHandler}>

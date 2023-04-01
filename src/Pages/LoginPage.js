@@ -62,7 +62,7 @@ const Login = (props) => {
 
   return (
     <div className={classes.container}>
-      {loading && <Loading />}
+      {loading && <Loading type="bubbles" width="80px" height="80px" />}
       <div className={classes.wrapper}>
         <ImageModel />
         <div className={classes.Model}>

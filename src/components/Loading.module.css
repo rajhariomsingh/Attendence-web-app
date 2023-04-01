@@ -3,7 +3,7 @@
   height: 100%;
   width: 100%;
   z-index: 5px;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;

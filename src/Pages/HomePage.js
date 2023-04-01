@@ -147,7 +147,7 @@ const HomePage = () => {
         </div>
       )}
       <div className={classes.container}>
-        {loading && <Loading />}
+        {loading && <Loading type="bubbles" width="80px" height="80px" />}
         <div className={classes.classRoom}>
           {rooms.map((room) => (
             <RoomModel room={room} key={room.id} />

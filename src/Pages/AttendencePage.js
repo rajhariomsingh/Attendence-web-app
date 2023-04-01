@@ -140,7 +140,7 @@ const AttendencePage = () => {
   const attendanceId = `${selectedDate.date}${selectedDate.getMonth}${selectedDate.getYear}${roomId}`;
   return (
     <div className={classes.model}>
-      {loading && <Loading />}
+      {loading && <Loading type="bubbles" width="80px" height="80px" />}
       <div className={classes.title}>
         <div className={classes.description}>{room.roomName}</div>
         <div className={classes.description}>{room.section}</div>
