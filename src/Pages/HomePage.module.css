@@ -3,7 +3,7 @@
   min-height: 100vh;
   height: auto;
   width: 100vw;
-  /* display: block; */
+
   margin-top: 10px;
   grid-template-rows: 1fr;
 }
