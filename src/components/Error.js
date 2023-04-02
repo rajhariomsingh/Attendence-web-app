@@ -22,6 +22,14 @@ const Error = ({ authCode }) => {
     case "auth/email-already-in-use":
       return <b className={classes.error}>Already registered.</b>;
 
+    case "join/empty-details":
+      return <b className={classes.error}>Please fill join id.</b>;
+
+    case "join/not-found":
+      return <b className={classes.error}>Wrong join id.</b>;
+
+    case "join/already-joined":
+      return <b className={classes.error}>Already joined.</b>;
     // Many more authCode mapping here...
 
     default:

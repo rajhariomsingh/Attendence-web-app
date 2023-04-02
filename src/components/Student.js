@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import classes from "../components/Student.module.css";
 import { db } from "../firebase";
-import { doc, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, getDoc, deleteDoc } from "firebase/firestore";
 import Loading from "../components/Loading";
 const Student = ({ student, selectedDate, roomId }) => {
   const [present, setPresent] = useState([]);
@@ -62,18 +62,19 @@ const Student = ({ student, selectedDate, roomId }) => {
       setLoading(true);
       const collection = "ATTENDANCE";
       try {
-        const cityRef = doc(db, collection, attendanceId);
-        await setDoc(
-          cityRef,
-          {
-            present: [],
-            absent: [],
-            studentId: student.id,
-            roomId,
-            selectedDate,
-          },
-          { merge: true }
-        );
+        await deleteDoc(doc(db, collection, attendanceId));
+        // const cityRef = doc(db, collection, attendanceId);
+        // await setDoc(
+        //   cityRef,
+        //   {
+        //     present: [],
+        //     absent: [],
+        //     studentId: student.id,
+        //     roomId,
+        //     selectedDate,
+        //   },
+        //   { merge: true }
+        // );
         setSomeChange((prev) => !prev);
       } catch {
         setLoading(false);

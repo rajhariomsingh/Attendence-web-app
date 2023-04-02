@@ -9,6 +9,7 @@ import { async } from "@firebase/util";
 import { UserAuth } from "../context/AuthContext";
 import BasicExample from "../components/Loading";
 import Loading from "../components/Loading";
+import Error from "../components/Error";
 const HomePage = () => {
   document.title = "Room";
   const { currentUser, type } = UserAuth();
@@ -20,6 +21,7 @@ const HomePage = () => {
   const [rooms, setRooms] = useState([]);
   const [present, setPresent] = useState(0);
   const [absent, setAbsent] = useState(0);
+  const [err, setErr] = useState("");
   // const [percent, setPercent] = useState(0);
   //////
   useEffect(() => {
@@ -96,13 +98,22 @@ const HomePage = () => {
 
   /////
   const joinRoomHandler = async () => {
-    if (joinId === "") return;
+    if (joinId === "") {
+      setErr("join/empty-details");
+    }
 
     const result = doc(db, "ROOMS", joinId);
     const docSnap4 = await getDoc(result);
 
     if (!docSnap4.exists()) {
+      setErr("join/not-found");
       console.log("No such document!");
+      return;
+    }
+
+    const exist = rooms.find((room) => room.id === joinId);
+    if (exist) {
+      setErr("join/already-joined");
       return;
     }
     try {
@@ -135,6 +146,7 @@ const HomePage = () => {
             <input type="text" value={joinId} onChange={changeHandler} />
             <span onClick={joinRoomHandler}>Join Room</span>
           </div>
+          <Error authCode={err} />
           <div className={classes.dataContainer}>
             <span className={classes.data}>{`Total Lecture: ${
               present + absent
