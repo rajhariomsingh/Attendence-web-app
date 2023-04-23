@@ -34,50 +34,6 @@ const AboutPage = () => {
       <h2>Our Team</h2>
       <div className={classes.container}>
         <span className={classes.profileContainer}>
-          <img src={Dip2} className={classes.img1}></img>
-          <h2>Dipendra Raghav</h2>
-          <span className={classes.logo}>
-            <a href="https://www.instagram.com/dipendra.cpp/" target="blank">
-              <img src={insta} width="50px" />
-            </a>
-          </span>
-          <span className={classes.logo}>
-            <a href="https://github.com/Dipendra-Raghav" target="blank">
-              <img src={git} width="49px" />
-            </a>
-          </span>
-          <span className={classes.logo}>
-            <a
-              href="https://www.linkedin.com/in/dipendra-raghav/"
-              target="blank"
-            >
-              <img src={link} width="53px" />
-            </a>
-          </span>
-        </span>
-        <span className={classes.profileContainer}>
-          <img src={faz} className={classes.img1}></img>
-          <h2>Fazal Ahmad</h2>
-          <span className={classes.logo}>
-            <a href="http://instagram.com/fazal__sidd" target="blank">
-              <img src={insta} width="50px" />
-            </a>
-          </span>
-          <span className={classes.logo}>
-            <a href="https://github.com/fazalsidd" target="blank">
-              <img src={git} width="49px" />
-            </a>
-          </span>
-          <span className={classes.logo}>
-            <a
-              href="https://www.linkedin.com/in/fazal-ahmad-8091b6223/"
-              target="blank"
-            >
-              <img src={link} width="53px" />
-            </a>
-          </span>
-        </span>
-        <span className={classes.profileContainer}>
           <img src={gau} className={classes.img1}></img>
           <h2>Gaurav Verma</h2>
           <span className={classes.logo}>

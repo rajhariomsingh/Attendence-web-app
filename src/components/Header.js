@@ -16,7 +16,7 @@ const Header = ({ setShowNoti }) => {
       <div className={classes.logoContainer}>
         <h1>
           <img src={logo} alt="logo" width="40px" />
-          PunctualPal
+          BeOnTime
         </h1>
       </div>
       {currentUser && (
