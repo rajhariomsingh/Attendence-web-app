@@ -10,6 +10,8 @@ import { useParams } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import DisplayAttendance from "../components/DisplayAttendance";
 import Loading from "../components/Loading";
+
+import { WhatsappShareButton, WhatsappIcon } from "react-share";
 const AttendencePage = () => {
   document.title = "Attendance";
   const { roomId } = useParams();
@@ -152,7 +154,26 @@ const AttendencePage = () => {
             className={classes.description}
           >{`${selectedDate.date}-${selectedDate.getMonth}-${selectedDate.getYear}`}</div>
         )}
-        {type === "TEACHER" && <div className={classes.roomId}>{roomId}</div>}
+
+        {type === "TEACHER" && (
+          <div
+            className={classes.roomId}
+            onClick={() => {
+              navigator.clipboard.writeText(roomId);
+            }}
+          >
+            {roomId}
+          </div>
+        )}
+
+        {type === "TEACHER" && (
+          <WhatsappShareButton
+            url={`https://beon-time.vercel.app/?joinId=${roomId}`}
+          >
+            <WhatsappIcon size={25} round={true} />
+          </WhatsappShareButton>
+        )}
+
         {type === "STUDENT" && (
           <div className={classes.roomId}>{`Total Lecture: ${
             totalA + totalP

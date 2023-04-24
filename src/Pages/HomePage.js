@@ -10,13 +10,17 @@ import { UserAuth } from "../context/AuthContext";
 import BasicExample from "../components/Loading";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import { useLocation } from "react-router-dom";
 const HomePage = () => {
   document.title = "Room";
   const { currentUser, type } = UserAuth();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get("joinId") ?? "";
 
   console.log(type);
   const [loading, setLoading] = useState(false);
-  const [joinId, setJoinId] = useState("");
+  const [joinId, setJoinId] = useState(id);
   const [newJoin, setNewJoin] = useState(false);
   const [rooms, setRooms] = useState([]);
   const [present, setPresent] = useState(0);
