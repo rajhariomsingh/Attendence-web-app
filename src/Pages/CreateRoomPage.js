@@ -70,7 +70,7 @@ const CreateRoomPage = () => {
 
   return (
     <div className={classes.container}>
-      {loading && <Loading />}
+      {loading && <Loading pos={"absolute"} />}
       <div className={classes.title}>
         <h3>Create Your Class Room</h3>
       </div>
